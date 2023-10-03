@@ -1,0 +1,26 @@
+Allgemein:
+Idee/Konzept									Het Dave
+
+Audio:
+Beschaffung der Audiodateien:							Rudraksha Samdhani
+
+Sprites & Spritesheets:
+Gestaltung der Sprites & Spritesheets für den Hintergrund			Nadia Christiany Purba
+Gestaltung der Sprites & Spritesheets für den Vordergrung			Aditya Bharadwaj
+
+Code:
+Audio: Level 1									Rudraksha Samdhani
+Audio: Level 2									Nadia Christiany Purba
+Audio: Level 3									Aditya Bharadwaj
+Audio: Level 4									Het Dave
+Hintergrund & Vordergrund: Level 1						Het Dave
+Hintergrund & Vordergrund: Level 2						Vincent Schärl
+Hintergrund & Vordergrund: Level 3						Vincent Schärl
+Hintergrund & Vordergrund: Level 4						Vincent Schärl
+Objekte: Level 1								Vincent Schärl
+Objekte: Level 2								Vincent Schärl
+Objekte: Level 3								Vincent Schärl
+Objekte: Level 4								Vincent Schärl
+Opening Scene									Rudraksha Samdhani
+User Interface (Texte, Timer)							Vincent Schärl
+Verknüpfung der Code-Schnittstellen						Vincent Schärl
