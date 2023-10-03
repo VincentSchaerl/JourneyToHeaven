@@ -34,7 +34,7 @@ public class GalaxyController : MonoBehaviour
         spriteRenderer.sortingLayerName = "Galaxies";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float xSize = UnityEngine.Random.Range(0.8f, 2f);
+        float xSize = UnityEngine.Random.Range(0f, 2f);
         float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position is handled by galaxySpawnerController
@@ -63,7 +63,7 @@ public class GalaxyController : MonoBehaviour
         // become less transparent between y = 300 and y = 500
         if (transform.parent.transform.position.y > 290f && transform.parent.transform.position.y < 410f)
         {
-            float a = Math.Min(1f, Math.Max(0f, (transform.parent.transform.position.y - 300f) / 100f));
+            float a = Math.Max(0f, Math.Min(1f, (transform.parent.transform.position.y - 300f) / 100f));
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, a);
         }
     }

@@ -18,6 +18,7 @@ public class BalloonClusterController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private float verticalFlyingSpeed = 0f;
+    private const float xSize = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class BalloonClusterController : MonoBehaviour
         rigidbody2D.isKinematic = true;
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 3 / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(8.2f, 3.4f, 0f);

@@ -36,7 +36,7 @@ public class StarController : MonoBehaviour
         spriteRenderer.sortingLayerName = "Stars";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float size = UnityEngine.Random.Range(0.01f, 0.05f);
+        float size = UnityEngine.Random.Range(0f, 0.05f);
         float scale = size / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position is handled by starSpawnerController
@@ -65,7 +65,7 @@ public class StarController : MonoBehaviour
         // become less transparent between y = 100 and y = 300
         if (transform.parent.transform.position.y > 90f && transform.parent.transform.position.y < 310f)
         {
-            float a = Math.Min(1f, Math.Max(0f, (transform.parent.transform.position.y - 100f) / 200f));
+            float a = Math.Max(0f, Math.Min(1f, (transform.parent.transform.position.y - 100f) / 200f));
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, a);
         }
     }

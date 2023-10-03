@@ -8,6 +8,7 @@ TagManager:
   - Thundercloud
   - Asteroid
   - BlackHole
+  - HighScoreTable
   layers:
   - Default
   - TransparentFX
@@ -48,11 +49,11 @@ TagManager:
   - name: Sky
     uniqueID: 2499302449
     locked: 0
-  - name: Galaxies
-    uniqueID: 1223469877
-    locked: 0
   - name: Stars
     uniqueID: 4191990349
+    locked: 0
+  - name: Galaxies
+    uniqueID: 1223469877
     locked: 0
   - name: Sun
     uniqueID: 1188660219

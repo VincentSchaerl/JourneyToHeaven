@@ -15,7 +15,7 @@ public class HawkController : MonoBehaviour
     private Camera cameraCamera;
     private CapsuleCollider2D capsuleCollider2D;
     private Rigidbody2D rigidBody2D;
-    private float speed = -8f;
+    private const float speed = -8f;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update

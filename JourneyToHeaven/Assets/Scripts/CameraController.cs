@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
     private GameObject blackHole;
     private SpriteRenderer blackHoleSpriteRenderer;
     private Camera camera;
-    private float cameraWidth = 20f;
+    private const float cameraWidth = 20f;
     [SerializeField]
     private GameObject heavenCloudSpawnerPrefab;
     private bool isGameFinished = false;

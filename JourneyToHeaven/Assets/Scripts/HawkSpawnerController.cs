@@ -12,7 +12,8 @@ public class HawkSpawnerController : MonoBehaviour
     private SpriteRenderer hawkPrefabSpriteRenderer;
     private float time = 0;
     private float waitingTime;
-    private float waitingTimeMax = 4f;
+    private const float waitingTimeMax = 4f;
+    private const float xSize = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class HawkSpawnerController : MonoBehaviour
             time = 0f;
             waitingTime = Random.Range(0f, waitingTimeMax);
             // scale
-            float scale = 1f / (hawkPrefabSpriteRenderer.bounds.size.x / hawkPrefab.transform.localScale.x);
+            float scale = xSize / (hawkPrefabSpriteRenderer.bounds.size.x / hawkPrefab.transform.localScale.x);
             // tranform.position
             float xPosition = Random.Range(-10f, 10f);
             float ySize = hawkPrefabSpriteRenderer.bounds.size.y / hawkPrefab.transform.localScale.y * scale;

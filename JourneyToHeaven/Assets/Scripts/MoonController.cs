@@ -13,6 +13,7 @@ public class MoonController : MonoBehaviour
     private float deltaCameraYPositionPosition;
     private float deltaCameraYPositionTransparency;
     private float initialCameraYPosition;
+    private const float size = 3f;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class MoonController : MonoBehaviour
         transform.localPosition = new Vector3(localXPosition, transform.localPosition.y, 10f);
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 3f / spriteRenderer.bounds.size.x;
+        float scale = size / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
     }
 

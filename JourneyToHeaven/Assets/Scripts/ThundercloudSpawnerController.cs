@@ -8,12 +8,13 @@ public class ThundercloudSpawnerController : MonoBehaviour
     private GameObject camera;
     private Camera cameraCamera;
     float lastCameraYPosition;
-    private int currentsortingOrder = 0;
+    private int currentSortingOrder = 0;
     [SerializeField]
     private List<GameObject> thundercloudPrefabList;
     private float movedDistance = 0;
     private float waitingDistance;
-    private float waitingDistanceMax = 40f;
+    private const float waitingDistanceMax = 40f;
+    private const float xSize = 8f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class ThundercloudSpawnerController : MonoBehaviour
             GameObject thundercloudPrefab = thundercloudPrefabList[i];
             SpriteRenderer thundercloudPrefabSpriteRenderer = thundercloudPrefab.GetComponent<SpriteRenderer>();
             // scale
-            float scale = 8f / (thundercloudPrefabSpriteRenderer.bounds.size.x / thundercloudPrefab.transform.localScale.x);
+            float scale = xSize / (thundercloudPrefabSpriteRenderer.bounds.size.x / thundercloudPrefab.transform.localScale.x);
             // tranform.position
             float xPosition = Random.Range(-10f, 10f);
             float ySize = thundercloudPrefabSpriteRenderer.bounds.size.y / thundercloudPrefab.transform.localScale.y * scale;
@@ -52,8 +53,8 @@ public class ThundercloudSpawnerController : MonoBehaviour
             // spawn
             GameObject thundercloud  = Instantiate(thundercloudPrefabList[i], position, rotation) as GameObject;
             // spriteRenderer.sortingOrder
-            thundercloud.GetComponent<SpriteRenderer>().sortingOrder = currentsortingOrder;
-            currentsortingOrder++;
+            thundercloud.GetComponent<SpriteRenderer>().sortingOrder = currentSortingOrder;
+            currentSortingOrder++;
             // transform.localScale
             thundercloud.transform.localScale = new Vector3(scale, scale, 1f);
         }

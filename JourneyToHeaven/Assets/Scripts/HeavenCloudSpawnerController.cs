@@ -8,8 +8,8 @@ public class HeavenCloudSpawnerController : MonoBehaviour
     private Camera cameraCamera;
     [SerializeField]
     private List<GameObject> heavenCloudPrefabList;
-    float maxRandomCloudSize = 16f;
-    int numberOfHeavenClouds = 400;
+    private const float maxRandomCloudSize = 16f;
+    private const int numberOfHeavenClouds = 400;
 
     // Start is called before the first frame update
     void Start()

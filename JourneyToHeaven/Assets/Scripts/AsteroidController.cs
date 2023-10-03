@@ -17,7 +17,7 @@ public class AsteroidController : MonoBehaviour
     private PlayerController playerController;
     private PolygonCollider2D polygonCollider2D;
     private Rigidbody2D rigidBody2D;
-    private float screenPassingTime = 4f;
+    private const float screenPassingTime = 4f;
     private SpriteRenderer spriteRenderer;
     private float time = 0f;
 

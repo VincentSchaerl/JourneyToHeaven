@@ -10,6 +10,7 @@ public class FinalCloudController : MonoBehaviour
 {
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
+    private const float xSize = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,6 @@ public class FinalCloudController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         // audioSource
-        audioSource.loop = true;
         audioSource.playOnAwake = false;
         audioSource.Play();
         audioSource.Pause();
@@ -25,7 +25,7 @@ public class FinalCloudController : MonoBehaviour
         spriteRenderer.sortingLayerName = "FinalCloud";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 20f / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(0f, 1100f, 0f);

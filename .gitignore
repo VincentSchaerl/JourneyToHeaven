@@ -71,5 +71,7 @@ crashlytics-build.properties
 /JourneyToHeaven/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /JourneyToHeaven/[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# added by me:
 /Audacity/
 /Gimp/
+/Releases/

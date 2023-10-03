@@ -55,7 +55,7 @@ public class HeavenCloudController : MonoBehaviour
         // become less transparent between initialCameraYPosition and y = 800
         if (transform.parent.transform.position.y < 810f)
         {
-            float a = Math.Min(1f, Math.Max(0f, (transform.parent.transform.position.y - initialCameraYPosition) / (800f - initialCameraYPosition)));
+            float a = Math.Max(0f, Math.Min(1f, (transform.parent.transform.position.y - initialCameraYPosition) / (800f - initialCameraYPosition)));
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, a);
         }
     }

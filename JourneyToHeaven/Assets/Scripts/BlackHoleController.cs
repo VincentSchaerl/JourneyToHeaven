@@ -14,6 +14,7 @@ public class BlackHoleController : MonoBehaviour
     private GameObject camera;
     private CircleCollider2D circleCollider2D;
     private Rigidbody2D rigidbody2D;
+    private const float size = 40f;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class BlackHoleController : MonoBehaviour
         spriteRenderer.sortingLayerName = "BlackHole";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 40f / spriteRenderer.bounds.size.x;
+        float scale = size / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(0f, 700f, 0f);

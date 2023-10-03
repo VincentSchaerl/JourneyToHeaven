@@ -16,6 +16,7 @@ public class WifeController : MonoBehaviour
     private GameObject player;
     private bool runningWithPlayer = false;
     private SpriteRenderer spriteRenderer;
+    private const float xSize = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class WifeController : MonoBehaviour
         spriteRenderer.sortingLayerName = "Wife";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 1f / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(0f, 1098.5f, 0f);

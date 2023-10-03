@@ -8,12 +8,12 @@ public class AsteroidSpawnerController : MonoBehaviour
     private GameObject asteroidPrefab;
     private GameObject camera;
     private Camera cameraCamera;
-    private int currentsortingOrder = 0;
+    private int currentSortingOrder = 0;
     private GameObject player;
     private PlayerController playerController;
     private float time = 0;
     private float waitingTime;
-    private float waitingTimeMax = 4f;
+    private const float waitingTimeMax = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -47,8 +47,8 @@ public class AsteroidSpawnerController : MonoBehaviour
             // spawn
             GameObject asteroid = Instantiate(asteroidPrefab, position, rotation, camera.transform) as GameObject;
             // spriteRenderer.sortingOrder
-            asteroid.GetComponent<SpriteRenderer>().sortingOrder = currentsortingOrder;
-            currentsortingOrder++;
+            asteroid.GetComponent<SpriteRenderer>().sortingOrder = currentSortingOrder;
+            currentSortingOrder++;
             // transform.localScale
             float scale = ySize / asteroid.GetComponent<SpriteRenderer>().bounds.size.y;
             asteroid.transform.localScale = new Vector3(scale, scale, 1f);

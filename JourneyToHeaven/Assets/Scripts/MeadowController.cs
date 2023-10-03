@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -12,6 +13,7 @@ public class MeadowController : MonoBehaviour
     private AudioSource audioSource;
     private GameObject camera;
     private SpriteRenderer spriteRenderer;
+    private const float xSize = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class MeadowController : MonoBehaviour
         spriteRenderer.sortingLayerName = "Meadow";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 20f / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(0f, spriteRenderer.bounds.size.y / 2f, 0f);

@@ -8,8 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(TextMeshProUGUI))]
 
-// gameOverText is a child of canvas
-public class GameOverTextController : MonoBehaviour
+public class PlayAgainButtonTextController : MonoBehaviour
 {
     private RectTransform rectTransform;
     private TMP_Text tmpText;
@@ -20,22 +19,20 @@ public class GameOverTextController : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         tmpText = GetComponent<TextMeshProUGUI>();
         // rectTransform
-        rectTransform.anchorMax = new Vector2(0.7f, 0.7f);
-        rectTransform.anchorMin = new Vector2(0.3f, 0.5f);
+        rectTransform.anchorMax = new Vector2(1f, 0.8f);
+        rectTransform.anchorMin = new Vector2(0f, 0.2f);
         rectTransform.offsetMax = new Vector2(0f, 0f);
         rectTransform.offsetMin = new Vector2(0f, 0f);
         // tmpText
-        tmpText.alignment = TextAlignmentOptions.Center;
-        tmpText.color = new Color32(255, 0, 0, 255);
         tmpText.enableAutoSizing = true;
         tmpText.fontSizeMax = 1000f;
         tmpText.fontSizeMin = 0f;
-        tmpText.fontStyle = FontStyles.Bold;
-        tmpText.text = "Game Over";
+        tmpText.text = "Play Again";
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Animator))]
@@ -18,10 +19,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject asteroidSpawnerPrefab;
     private AudioSource audioSource;
-    private float audioSourcePitchOutfit1 = 1f;
-    private float audioSourcePitchOutfit2 = 1.5f;
-    private float audioSourcePitchOutfit3 = 2f;
-    private float audioSourcePitchOutfit4 = 3f;
+    private const float audioSourcePitchOutfit1 = 1f;
+    private const float audioSourcePitchOutfit2 = 1.5f;
+    private const float audioSourcePitchOutfit3 = 2f;
+    private const float audioSourcePitchOutfit4 = 3f;
     private GameObject balloonCluster;
     private BalloonClusterController balloonClusterController;
     private SpriteRenderer balloonClusterSpriteRenderer;
@@ -42,16 +43,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject finalCloudBorderPrefab;
     private bool flying = false;
-    private bool gameOverNotCalledYet = true;
     [SerializeField]
     private GameObject gameFinishedTextPrefab;
+    private bool gameOverNotCalledYet = true;
     [SerializeField]
     private GameObject gameOverTextPrefab;
     private GameObject hawkSpawner;
     [SerializeField]
     private GameObject hawkSpawnerPrefab;
-    private float horizontalFlyingForceParameter = 1000f;
-    private float horizontalFlyingForceParameterHeaven = 2000f;
+    [SerializeField]
+    private GameObject highScoreTablePrefab;
+    private const float horizontalFlyingForceParameter = 1000f;
+    private const float horizontalFlyingForceParameterHeaven = 2000f;
     private GameObject hotAirBalloon;
     private Animator hotAirBalloonAnimator;
     private HotAirBalloonController hotAirBalloonController;
@@ -71,10 +74,12 @@ public class PlayerController : MonoBehaviour
     private AudioSource rocketAudioSource;
     private RocketController rocketController;
     private float runningSpeed;
-    private float runningSpeedOutfit1 = 4f;
-    private float runningSpeedOutfit2 = 6f;
-    private float runningSpeedOutfit3 = 8f;
-    private float runningSpeedOutfit4 = 12f;
+    private const float runningSpeedOutfit1 = 4f;
+    private const float runningSpeedOutfit2 = 6f;
+    private const float runningSpeedOutfit3 = 8f;
+    private const float runningSpeedOutfit4 = 12f;
+    [SerializeField]
+    private GameObject playAgainButtonPrefab;
     private GameObject sky;
     private AudioSource skyAudioSource;
     private GameObject spaceStationPlatform;
@@ -90,13 +95,14 @@ public class PlayerController : MonoBehaviour
     private GameObject timer;
     private TimerController timerController;
     private float verticalFlyingSpeed;
-    private float verticalFlyingSpeedBalloonCluster = 4f;
-    private float verticalFlyingSpeedHotAirBalloon = 8f;
-    private float verticalFlyingSpeedRocket = 16f;
-    private float verticalFlyingSpeedHeaven = 32f;
+    private const float verticalFlyingSpeedBalloonCluster = 4f;
+    private const float verticalFlyingSpeedHotAirBalloon = 8f;
+    private const float verticalFlyingSpeedRocket = 16f;
+    private const float verticalFlyingSpeedHeaven = 32f;
     private GameObject wife;
     private WifeController wifeController;
     private SpriteRenderer wifeSpriteRenderer;
+    private const float xSize = 1f;
 
     enum Mode
     {
@@ -164,7 +170,7 @@ public class PlayerController : MonoBehaviour
         // the order of the sorting layers is as follows:
         // [background], [platforms], Wife, Player2, [buildings], [obstacles], blackHole, [vehicles], Player1, [openingScene]
         // whereas
-        // [background] = Sky, Galaxies, Stars, Sun, Moon, Clouds
+        // [background] = Sky, Stars, Galaxies, Sun, Moon, Clouds
         // [platforms] = Cliff, FinalCloud, Meadow, SpaceStationPlatform
         // [buildings] = House, SpaceStationModule
         // [obstacles] = Comets, Hawks, Thunderclouds, ThundercloudLightning
@@ -181,13 +187,18 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(0f, 1.5f, 0f);
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 1f / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // play again when 'r' key is pressed
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            SceneManager.LoadScene("GameScene");
+        }
         // destroy when out of screen
         if (mode == Mode.RunningWithWife && (transform.position.x < -40f || transform.position.x > 40f))
         {
@@ -199,7 +210,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
         // audioSource.panStereo
-        audioSource.panStereo = Math.Min(1f, Math.Max(-1f, transform.position.x / 10f));
+        audioSource.panStereo = Math.Max(-1f, Math.Min(1f, transform.position.x / 10f));
         // ControlInput
         ControlInput();
         // isWifeLeft/isWifeRight
@@ -478,6 +489,7 @@ public class PlayerController : MonoBehaviour
         Destroy(leftBorder);
         Destroy(rightBorder);
         GameObject gameOverText = Instantiate(gameOverTextPrefab, canvas.transform) as GameObject;
+        GameObject playAgainButton = Instantiate(playAgainButtonPrefab, canvas.transform) as GameObject;
         timerController.SetIsGameOver(true);
         wifeController.SetIsGameOver(true);
     }
@@ -574,6 +586,8 @@ public class PlayerController : MonoBehaviour
             Destroy(leftBorder);
             Destroy(rightBorder);
             GameObject gameFinishedText = Instantiate(gameFinishedTextPrefab, canvas.transform) as GameObject;
+            GameObject playAgainButton = Instantiate(playAgainButtonPrefab, canvas.transform) as GameObject;
+            GameObject highScoreTable = Instantiate(highScoreTablePrefab, canvas.transform) as GameObject;
             mode = Mode.RunningWithWife;
             runningSpeed = runningSpeedOutfit1;
             timerController.SetIsGameFinishied(true);
@@ -633,17 +647,16 @@ public class PlayerController : MonoBehaviour
         {
             horizontalDistance = -1f * runningSpeed * Time.deltaTime;
             // audioSource.volume (reduce volume to zero between x = -10 and x = -30)
-            audioSource.volume = Math.Min(1f, Math.Max(0f, 1f - (-transform.position.x - 10f) / 20f));
+            audioSource.volume = Math.Max(0f, Math.Min(1f, 1f - (-transform.position.x - 10f) / 20f));
         }
         else
         {
             horizontalDistance = runningSpeed * Time.deltaTime;
             // audioSource.volume (reduce volume to zero between x = 10 and x = 30)
-            audioSource.volume = Math.Min(1f, Math.Max(0f, 1f - (transform.position.x - 10f) / 20f));
+            audioSource.volume = Math.Max(0f, Math.Min(1f, 1f - (transform.position.x - 10f) / 20f));
         }
         Vector3 movement = new Vector3(horizontalDistance, 0f, 0f);
         transform.Translate(movement);
-
     }
 
     public void SetIsGameOver(bool value)

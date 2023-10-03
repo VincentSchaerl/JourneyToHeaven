@@ -73,6 +73,16 @@ public class TimerController : MonoBehaviour
         }
     }
 
+    public float GetTime()
+    {
+        return time;
+    }
+
+    public string GetTimeString()
+    {
+        return tmpText.text;
+    }
+
     public void SetIsGameFinishied(bool value)
     {
         isGameFinished = value;

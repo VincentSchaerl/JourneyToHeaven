@@ -19,6 +19,7 @@ public class HotAirBalloonController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private float verticalFlyingSpeed = 0f;
+    private const float ySize = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class HotAirBalloonController : MonoBehaviour
         rigidbody2D.isKinematic = true;
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 5f / spriteRenderer.bounds.size.y;
+        float scale = ySize / spriteRenderer.bounds.size.y;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(-8f, 107.6f, 0f);

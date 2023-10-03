@@ -9,6 +9,7 @@ using UnityEngine;
 public class SpaceStationModule : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private const float xSize = 6f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class SpaceStationModule : MonoBehaviour
         transform.localPosition = new Vector3(0f, 3.8f, 0f);
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 6f / spriteRenderer.bounds.size.x;
+        float scale = xSize / spriteRenderer.bounds.size.x;
         transform.localScale = new Vector3(scale, scale, 1f);
     }
 

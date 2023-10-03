@@ -26,6 +26,7 @@ public class RocketController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private float verticalFlyingSpeed = 0f;
+    private const float ySize = 6f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class RocketController : MonoBehaviour
         spriteRenderer.sortingLayerName = "Rocket";
         // transform.localScale
         transform.localScale = new Vector3(1f, 1f, 1f);
-        float scale = 6f / spriteRenderer.bounds.size.y;
+        float scale = ySize / spriteRenderer.bounds.size.y;
         transform.localScale = new Vector3(scale, scale, 1f);
         // transform.position
         transform.position = new Vector3(4.3f, 301.3f, 0f);
